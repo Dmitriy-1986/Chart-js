@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .chart {
+            box-sizing: border-box;
+            max-width: 800px;
+            max-height: 400px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .marksChart {
+            margin: auto;
+            margin-bottom: 150px;
+            margin-top: 210px;
+            max-width: 600px;
+            max-height: 400px;
+            padding-bottom: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- 1 -->
+    <div class="chart">
+        <canvas id="myChart3" width="600" height="400"></canvas>
+    </div>
+
+    <!-- 2 -->
+    <div class="marksChart">
+        <canvas id="marksChart" width="600" height="400"></canvas>
+    </div>
+
+
+    <!-- CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"
+        integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- //CDN -->
+
+    <script>
+
+
+        /* 1 */
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line', // also try bar or other graph types
+
+            // The data for our dataset
+            data: {
+                labels: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                // Information about the dataset
+                datasets: [{
+                    label: "Батальон 1",
+                    backgroundColor: 'lightblue',
+                    borderColor: 'royalblue',
+                    data: [26.4, 39.8, 66.8, 66.4, 40.6, 55.2, 77.4, 69.8, 57.8, 76],
+                }, {
+                    label: "Батальон 2",
+                    backgroundColor: 'lightblue',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [26.4, 29.8, 56.8, 46.4, 30.6, 25.2, 87.4, 79.8, 47.8, 56],
+                }, {
+                    label: "Батальон 3",
+                    backgroundColor: 'lightblue',
+                    borderColor: 'rgb(75, 192, 192)',
+                    data: [22.4, 49.8, 66.8, 76.4, 50.6, 27.2, 97.4, 69.8, 57.8, 96],
+                }, {
+                    label: "Батальон 4",
+                    backgroundColor: 'lightblue',
+                    borderColor: 'rgb(255, 205, 86)',
+                    data: [21.4, 39.8, 76.8, 36.4, 10.6, 35.2, 57.4, 89.8, 67.8, 86],
+                }]
+            },
+
+            // Configuration options
+            options: {
+                layout: {
+                    padding: 10,
+                },
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Precipitation in Toronto'
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Precipitation in mm'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Month of the Year'
+                        }
+                    }]
+                }
+            }
+        });
+
+        /* 2 */
+        var marksCanvas = document.getElementById("marksChart");
+
+        var marksData = {
+            labels: ["ст. 309 ККУ", "ст. 307 ККУ", "ст. 44-3 КУпАП", "ст. 130 КУпАП", "ст. 126 КУпАП", "ст. 121 КУпАП"],
+            datasets: [{
+                label: "Батальон 1",
+                backgroundColor: "rgba(200,0,0,0.2)",
+                data: [65, 75, 70, 80, 60, 80]
+            }, {
+                label: "Батальон 2",
+                backgroundColor: "rgba(0,0,200,0.2)",
+                data: [24, 35, 40, 20, 10, 15]
+            }, {
+                label: "Батальон 3",
+                backgroundColor: "rgba(0,200,0,0.2)",
+                data: [54, 75, 80, 80, 70, 95]
+            }, {
+                label: "Батальон 4",
+                backgroundColor: "rgba(200,0,200,0.2)",
+                data: [54, 65, 60, 70, 70, 75]
+            }]
+        };
+
+        var radarChart = new Chart(marksCanvas, {
+            type: 'radar',
+            data: marksData
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>
